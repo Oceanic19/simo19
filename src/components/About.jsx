@@ -1,6 +1,9 @@
 // src/components/About.jsx
 
 import React from 'react';
+// IMAGE FIX: Import your image from src/assets
+import profileImage from '../assets/ME.jpg'; 
+
 // Data structure for the skills boxes
 const skillsData = [
   { 
@@ -8,14 +11,17 @@ const skillsData = [
     items: [
       { text: "HTML", icon: "fab fa-html5 text-orange-500" }, 
       { text: "CSS", icon: "fab fa-css3-alt text-blue-500" },
-      { text: "JavaScript", icon: "fab fa-js-square text-yellow-400" }
+      { text: "JavaScript", icon: "fab fa-js-square text-yellow-400" },
+      { text: "React", icon: "fab fa-react text-cyan-600" }
     ] 
   },
   { 
     title: "UI / UX DESIGN", 
     items: [
       { text: "CSS", icon: "fab fa-css3-alt text-blue-500" }, 
-      { text: "Figma", icon: "fab fa-figma text-purple-600" }
+      { text: "Figma", icon: "fab fa-figma text-purple-600" },
+      { text: "Tailwind CSS", icon: "fab fa-tailwind css text-purple-600" }
+      
     ] 
   },
   { 
@@ -61,7 +67,7 @@ export default function About() {
   return (
     <section id="about" className="px-10 py-16 scroll-mt-24">
       
-      {/* Breadcrumb Navigation - matches the Gallery sketch design */}
+      {/* Breadcrumb Navigation */}
       <div className="flex items-center mb-10 text-lg">
         <span className="text-neutral-500 dark:text-neutral-400 mr-2">/ /</span>
         <a href="#about" className="text-indigo-600 dark:text-indigo-300 hover:underline">About</a>
@@ -70,15 +76,16 @@ export default function About() {
       {/* 1. MAIN CONTENT (Image & Text) */}
       <div className="flex flex-col md:flex-row gap-12">
         
-        {/* LEFT COLUMN: Image Placeholder */}
+        {/* LEFT COLUMN: Image Container */}
         <div className="md:w-1/3 flex-shrink-0">
-          <div className="relative border-4 border-neutral-400 pt-16 h-80 w-full flex items-center justify-center dark:bg-neutral-800">
-            {/* Inner Placeholder Box */}
-            <div className='absolute inset-4 border border-neutral-400 flex items-center justify-center'>
-                <span className="text-lg font-semibold text-neutral-500">
-                    MY IMAGE PICTURE
-                </span>
-            </div>
+          <div className="relative border-4 border-neutral-400 h-80 w-full overflow-hidden">
+            
+            <img
+                src={profileImage} // Loads the imported image
+                alt="Melgen Simo Profile Picture" 
+                className="w-full h-full object-cover object-center" 
+            />
+
           </div>
         </div>
 
@@ -93,8 +100,9 @@ export default function About() {
           <p>
             I've discovered that my strengths and interests truly align with front-end (UI design and networking). I enjoy figuring out how things work, solving connectivity issues, and exploring new technologies that challenge me to grow and enhance my capabilities.
           </p>
-          <p className="border-t border-neutral-300 dark:border-neutral-700 pt-4 mt-6">
             Aside from my studies, I aspire to serve in the Armed Forces of the Philippines or build a career in the IT industry, where I can apply my skills, discipline, and passion for technology to make a meaningful impact.
+          <p className="border-t border-neutral-300 dark:border-neutral-700 pt-4 mt-6">
+          
           </p>
         </div>
       </div>
