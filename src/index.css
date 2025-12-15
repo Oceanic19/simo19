@@ -1,0 +1,6 @@
+/* src/index.css */
+
+@import "tailwindcss";
+
+/* You can add any custom CSS below the import if needed, 
+   but it's best practice to use utility classes in React components. */
