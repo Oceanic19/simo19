@@ -9,7 +9,7 @@ import React, { useState, useEffect } from 'react';
 const galleryItems = [
     { 
         title: "PRE DEPARTURE", 
-        location: "DAVAO", 
+        location: "Davao City", 
         date: "November 19, 2025",
         photoCount: 7, 
         imagePath: "/images/PRE DEPARTURE.png",
@@ -18,7 +18,7 @@ const galleryItems = [
     },
     { 
         title: "WORLDTECH SOLUTIONS INC.", 
-        location: "Cebu", 
+        location: "Cebu City", 
         date: "November 19, 2025",
         photoCount: 6, 
         imagePath: "/images/WORLDTECH.jpg",
@@ -27,7 +27,7 @@ const galleryItems = [
     },
     { 
         title: "BAI HOTEL", 
-        location: "Cebu", 
+        location: "Cebu City", 
         date: "November 19, 2025",
         photoCount: 6, 
         imagePath: "/images/BAI HOTEL.jpg",
@@ -36,7 +36,7 @@ const galleryItems = [
     },
     { 
         title: "CODECHUM", 
-        location: "Cebu", 
+        location: "Cebu City", 
         date: "November 20, 2025",
         photoCount: 9, 
         imagePath: "/images/CODECHUM.jpg",
@@ -45,7 +45,7 @@ const galleryItems = [
     },
     { 
         title: "RIVANT IT CEBU", 
-        location: "Cebu", 
+        location: "Cebu City", 
         date: "November 20, 2025",
         photoCount: 9, 
         imagePath: "/images/RIVAN IT CEBU.jpg",
@@ -54,7 +54,7 @@ const galleryItems = [
     },
     { 
         title: "MATA TECHNOLOGIES INC.", 
-        location: "Cebu", 
+        location: "Cebu City", 
         date: "November 21, 2025",
         photoCount: 8, 
         imagePath: "/images/MATA TECHNOLOGIES.jpg",
@@ -63,7 +63,7 @@ const galleryItems = [
     },
     { 
         title: "CDRRMO TAGBILARAN", 
-        location: "Bohol", 
+        location: "Bohol City", 
         date: "November 22, 2025",
         photoCount: 5, 
         imagePath: "/images/CDRRMO TAGBILARAN.jpg",
@@ -309,20 +309,19 @@ export default function Gallery() {
 
     return (
         <section id="gallery" className="px-10 py-16 scroll-mt-24">
-            
-            {/* Breadcrumb Navigation */}
-            <div className="flex items-center mb-10 text-lg">
-                <a href="#about" className="text-neutral-500 dark:text-neutral-400 hover:underline">About</a>
-                <span className="mx-2">/</span>
-                <a href="#gallery" className="text-indigo-600 dark:text-indigo-300 font-semibold hover:underline">Gallery</a>
-            </div>
+
+ {/* Header (Matching your requested design) */}
+        <div className="text-center mb-10">
+        <h2 className="text-3xl font-bold mb-2">THROWBACK GALLERY</h2>
+        
+        </div>
 
             {/* Main Content: Two Columns */}
             <div className="flex flex-col lg:flex-row gap-12">
                 
+                
                 {/* LEFT COLUMN: Introduction Text */}
                 <div className="lg:w-1/3 space-y-4">
-                    <h2 className="text-3xl font-bold">Educational Tour Photos</h2>
                     <p className="text-base text-neutral-700 dark:text-neutral-300">
                         Welcome to the Gallery! This section highlights the places we visited during our educational tour. Each card represents a key destination or company visit, showcasing the different learning environments and technical insights we gained.
                     </p>
@@ -333,7 +332,7 @@ export default function Gallery() {
 
                 {/* RIGHT COLUMN: Image Grid */}
                 <div className="lg:w-2/3">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
                         {galleryItems.map((item, index) => (
                             <GalleryCard 
                                 key={index} 

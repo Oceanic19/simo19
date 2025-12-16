@@ -5,54 +5,70 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import Home from "./components/Home";
 import About from "./components/About";
 import Gallery from "./components/Gallery";
-import Journal from "./components/Journal"; // <--- ADD THIS IMPORT
+import Journal from "./components/Journal"; 
+import Certificate from "./components/Certificate"; 
 
 export default function App() {
-    // ... (toggleMode and mainWrapperClass logic remains the same)
-    const [mode, setMode] = useState("light"); 
-
-    const toggleMode = () => {
-        setMode(prevMode => (prevMode === "light" ? "dark" : "light"));
-    };
-
-    const mainWrapperClass = mode === "dark" ? "dark" : "";
-
-    const sections = ["home", "about", "gallery", "journal", "certificates"];
+    // Mode is locked to "dark" as requested
+    const mode = "dark"; 
+    const sections = ["home", "about", "gallery", "journal", "certificates"]; 
     
-    return (
-        <div className={`${mainWrapperClass}`}>
-            <div className={`min-h-screen bg-neutral-50 dark:bg-neutral-900 text-neutral-800 dark:text-white`}>
-                <div className="w-full max-w-[1200px] mx-auto relative border border-neutral-500 mb-6 min-h-[96vh]">
+    // --- Define Dark Mode Classes ---
+    const bgClass = "bg-gradient-to-br from-black via-gray-950 to-indigo-950";
+    const textClass = "text-white";
+    const navbarBgClass = "bg-gray-900/90 backdrop-blur-md border-neutral-700";
+    const contentBgClass = "bg-black/10 border-neutral-700";
+    const hrColorClass = "border-neutral-700";
 
-                    {/* FIXED NAVBAR CONTAINER (Unchanged) */}
-                    <div className={`fixed w-full max-w-[1200px] mx-auto z-20 top-0 left-1/2 -translate-x-1/2 
-                                    border border-neutral-500 border-t-0 border-b-0
-                                    bg-neutral-50 dark:bg-neutral-900`}>
+    return (
+        <div className={`dark`}>
+            {/* 1. MAIN BACKGROUND CONTAINER (Full Screen) */}
+            <div className={`min-h-screen ${textClass} 
+                             ${bgClass} bg-fixed relative overflow-x-hidden`}> 
+                
+                {/* 🌌 Cosmic Star Layer (Uses custom star-fall animation from config) */}
+                <div className="absolute top-0 left-0 w-full h-full bg-stars animate-[star-fall_100s_linear_infinite] z-0"></div>
+                
+                {/* 2. CONTENT WRAPPER */}
+                <div className={`w-full relative border mb-6 min-h-[96vh]
+                                ${contentBgClass} backdrop-blur-none z-10`}> 
+
+                    {/* FIXED NAVBAR CONTAINER */}
+                    <div className={`fixed w-full z-20 top-0 left-0 right-0 
+                                     border-b border-t-0
+                                     ${navbarBgClass}`}> 
                         
-                        <header className="flex justify-between items-center px-10 pt-6 pb-4">
-                            {/* ... (Header content remains the same) ... */}
-                            <div className="flex items-center gap-6">
+                        <header className="flex justify-between items-center 
+                                           /* 💡 Responsive Padding: px-4 on mobile, px-10 on sm screens and up */
+                                           px-4 sm:px-10 pt-6 pb-4">
+                            
+                            <div className="flex items-center 
+                                            /* 💡 Responsive Gap: gap-3 on mobile, gap-6 on sm screens and up */
+                                            gap-3 sm:gap-6">
                                 <a
                                     href="#home"
-                                    className="font-bold tracking-widest text-lg transition-all duration-300
-                                            hover:-translate-y-1 hover:text-indigo-600 dark:hover:text-indigo-300
-                                            cursor-default" 
+                                    /* 💡 Responsive Text Size: base on mobile, lg on sm screens and up */
+                                    className="font-bold tracking-widest text-base sm:text-lg transition-all 
+                                               hover:-translate-y-1 hover:text-indigo-400
+                                               cursor-default" 
                                 >
                                     SARGEE
                                 </a>
-                                <div className="flex gap-4 text-xl">
+                                <div className="flex 
+                                                /* 💡 Responsive Gap: gap-2 on mobile, gap-4 on sm screens and up */
+                                                gap-2 sm:gap-4 text-lg sm:text-xl">
                                     {/* Social Icons Mapping */}
                                     {[
-                                        { icon: "facebook-f", link: "https://facebook.com" },
-                                        { icon: "github", link: "https://github.com" },
-                                        { icon: "instagram", link: "https://instagram.com" },
+                                        { icon: "facebook-f", link: "https://www.facebook.com/melgen.simo19" },
+                                        { icon: "github", link: "https://github.com/Oceanic19" },
+                                        { icon: "instagram", link: "https://www.instagram.com/melgenieee/" },
                                     ].map((item, index) => (
                                         <a
                                             key={index}
                                             href={item.link}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="transition-all duration-300 hover:scale-125 hover:-translate-y-1" 
+                                            className="transition-all duration-300 hover:scale-125 hover:-translate-y-1 hover:text-indigo-400" 
                                         >
                                             <i className={`fab fa-${item.icon}`}></i>
                                         </a>
@@ -60,69 +76,57 @@ export default function App() {
                                 </div>
                             </div>
 
-                            {/* RIGHT - Navigation Links and Dark Mode Toggle */}
-                            <nav className="flex items-center gap-8 text-sm">
+                            {/* RIGHT - Navigation Links ONLY */}
+                            <nav className="flex items-center 
+                                            /* 💡 Responsive Gap: gap-4 on mobile, gap-8 on sm screens and up */
+                                            gap-4 sm:gap-8 
+                                            /* 💡 Responsive Text Size: xs on mobile, sm on sm screens and up */
+                                            text-xs sm:text-sm">
                                 {sections.map((item) => (
                                     <a
                                         key={item}
                                         href={`#${item}`}
-                                        className="transition-all duration-300 hover:scale-110 hover:text-indigo-600 dark:hover:text-indigo-300 capitalize"
+                                        className="transition-all duration-300 hover:scale-110 hover:text-indigo-400 capitalize"
                                     >
-                                        {item.replace("certificates", "Certificates")}
+                                        {/* 💡 Responsive Link Name: Shorten Certificates to Cert. on small screens */}
+                                        {item === "certificates" ? <span className="hidden sm:inline">Certificates</span> : item.replace("certificates", "Certificates")}
+                                        {item === "certificates" && <span className="sm:hidden">Cert.</span>}
                                     </a>
                                 ))}
-
-                                {/* --- SINGLE ICON TOGGLE (Functional and Clickable) --- */}
-                                <button
-                                    onClick={toggleMode} 
-                                    className="text-lg transition-all duration-300 hover:scale-125 hover:-translate-y-1 cursor-pointer"
-                                    aria-label="Toggle light/dark mode"
-                                >
-                                    <i
-                                        className={`fas ${
-                                            mode === "light"
-                                                ? "fa-moon text-neutral-600" 
-                                                : "fa-sun text-amber-500" 
-                                        }`}
-                                    ></i>
-                                </button>
-                                {/* --- END SINGLE ICON TOGGLE --- */}
-
                             </nav>
                         </header>
                         
-                        <hr className="border-neutral-400 dark:border-neutral-600 mx-10" />
+                        <hr className={`mx-4 sm:mx-10 ${hrColorClass}`} />
 
                     </div>
                     
-                    {/* FIXED NAVBAR COMPENSATION (Unchanged) */}
+                    {/* FIXED NAVBAR COMPENSATION */}
                     <div className="h-[7.5rem]"></div> 
                     
-                    {/* SECTION RENDERING */}
+                    {/* SECTION RENDERING (Uses responsive horizontal rule) */}
                     <div className="relative">
                         <Home />
-                        <hr className="absolute bottom-0 left-0 right-0 mx-10 border-neutral-400 dark:border-neutral-600" />
+                        <hr className={`absolute bottom-0 left-0 right-0 mx-4 sm:mx-10 ${hrColorClass}`} />
                     </div>
                     
                     <div className="relative">
                         <About />
-                        <hr className="absolute bottom-0 left-0 right-0 mx-10 border-neutral-400 dark:border-neutral-600" />
+                        <hr className={`absolute bottom-0 left-0 right-0 mx-4 sm:mx-10 ${hrColorClass}`} />
                     </div>
                     
                     <div className="relative">
                         <Gallery />
-                        <hr className="absolute bottom-0 left-0 right-0 mx-10 border-neutral-400 dark:border-neutral-600" />
+                        <hr className={`absolute bottom-0 left-0 right-0 mx-4 sm:mx-10 ${hrColorClass}`} />
                     </div>
                     
-                    {/* 💡 JOURNAL SECTION: USING THE NEW COMPONENT */}
                     <div className="relative">
                         <Journal /> 
-                        <hr className="absolute bottom-0 left-0 right-0 mx-10 border-neutral-400 dark:border-neutral-600" />
+                        <hr className={`absolute bottom-0 left-0 right-0 mx-4 sm:mx-10 ${hrColorClass}`} />
                     </div>
                     
-                    <div id="certificates" className="min-h-[50vh] px-10 py-16 scroll-mt-24">
-                        <h2 className="text-3xl font-bold mb-4">Certificates Section</h2>
-                        <p>Content for your Certificates goes here.</p>
+                    <div className="relative">
+                        <Certificate /> 
+                        <hr className={`absolute bottom-0 left-0 right-0 mx-4 sm:mx-10 ${hrColorClass}`} />
                     </div>
 
                 </div> 

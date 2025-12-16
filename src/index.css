@@ -2,5 +2,37 @@
 
 @import "tailwindcss";
 
-/* You can add any custom CSS below the import if needed, 
-   but it's best practice to use utility classes in React components. */
+/* src/index.css */
+
+/* ... (Your existing Tailwind directives like @tailwind base; etc.) ... */
+
+
+/* ------------------------------------------------ */
+/* -------- MOVING GALAXY BACKGROUND STAR EFFECT -------- */
+/* ------------------------------------------------ */
+
+@layer utilities {
+    .bg-stars {
+        /* Define a highly repetitive, dense pattern of small, dim stars */
+        background-image: 
+            /* Dimmest, most frequent stars (1x1px) */
+            radial-gradient(1px 1px at 5% 5%, #ffffff66, transparent),
+            radial-gradient(1px 1px at 15% 25%, #ffffff66, transparent),
+            radial-gradient(1px 1px at 30% 10%, #ffffff66, transparent),
+            radial-gradient(1px 1px at 45% 40%, #ffffff66, transparent),
+            radial-gradient(1px 1px at 60% 15%, #ffffff66, transparent),
+            radial-gradient(1px 1px at 80% 30%, #ffffff66, transparent),
+            radial-gradient(1px 1px at 95% 55%, #ffffff66, transparent),
+            /* Slightly brighter/larger stars (2x2px) */
+            radial-gradient(2px 2px at 2% 80%, #ffffff88, transparent),
+            radial-gradient(2px 2px at 22% 60%, #ffffff88, transparent),
+            radial-gradient(2px 2px at 55% 85%, #ffffff88, transparent),
+            radial-gradient(2px 2px at 78% 70%, #ffffff88, transparent),
+            /* Largest, brightest stars (3x3px) */
+            radial-gradient(3px 3px at 40% 95%, #ffffffaa, transparent),
+            radial-gradient(3px 3px at 90% 10%, #ffffffaa, transparent);
+        
+        background-repeat: repeat;
+        background-size: 500px 500px;
+    }
+}

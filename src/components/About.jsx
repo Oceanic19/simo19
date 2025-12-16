@@ -12,7 +12,8 @@ const skillsData = [
       { text: "HTML", icon: "fab fa-html5 text-orange-500" }, 
       { text: "CSS", icon: "fab fa-css3-alt text-blue-500" },
       { text: "JavaScript", icon: "fab fa-js-square text-yellow-400" },
-      { text: "React", icon: "fab fa-react text-cyan-600" }
+      { text: "React", icon: "fab fa-react text-cyan-600" },
+      { text: "React.js", icon: "fab fa-react text-cyan-600" }
     ] 
   },
   { 
@@ -20,7 +21,7 @@ const skillsData = [
     items: [
       { text: "CSS", icon: "fab fa-css3-alt text-blue-500" }, 
       { text: "Figma", icon: "fab fa-figma text-purple-600" },
-      { text: "Tailwind CSS", icon: "fab fa-tailwind css text-purple-600" }
+      { text: "Tailwind CSS", icon: "fas fa-water text-cyan-500" }
       
     ] 
   },
@@ -37,7 +38,7 @@ const skillsData = [
       { text: "Android Studio", icon: "fab fa-android text-green-600" }, 
       { text: "Java", icon: "fab fa-java text-red-700" }, 
       { text: "Python", icon: "fab fa-python text-yellow-500" }, 
-      { text: "C++", icon: "fas fa-code text-blue-500" }
+      { text: "C++", icon: "fas fa-microchip text-blue-600" }
     ] 
   },
 ];
@@ -67,11 +68,10 @@ export default function About() {
   return (
     <section id="about" className="px-10 py-16 scroll-mt-24">
       
-      {/* Breadcrumb Navigation */}
-      <div className="flex items-center mb-10 text-lg">
-        <span className="text-neutral-500 dark:text-neutral-400 mr-2">/ /</span>
-        <a href="#about" className="text-indigo-600 dark:text-indigo-300 hover:underline">About</a>
-      </div>
+     {/* Header (Matching your requested design) */}
+        <div className="text-center mb-10">
+        <h2 className="text-3xl font-bold mb-2">ABOUT ME</h2>
+        </div>
       
       {/* 1. MAIN CONTENT (Image & Text) */}
       <div className="flex flex-col md:flex-row gap-12">
